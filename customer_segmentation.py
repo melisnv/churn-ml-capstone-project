@@ -92,6 +92,6 @@ def create_afm(dataframe, csv=False):
         afm.to_csv("afm.csv")
     return afm
 
-
-afm = create_afm(data, True)
-print(afm)
+if __name__ == '__main__':
+    afm = create_afm(data, True)
+    print(afm)
