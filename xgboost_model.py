@@ -1,23 +1,23 @@
 import warnings
-
 warnings.filterwarnings("ignore")
 
-import random
 import numpy as np
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
+sns.set_theme(style='white')
+pd.set_option("display.max_columns",None)
+pd.set_option("display.width",500)
+sns.set(rc={"figure.figsize":(6,8)})
 
 from sklearn.metrics import classification_report, confusion_matrix
 from sklearn.metrics import accuracy_score
 from sklearn.model_selection import train_test_split
 from imblearn.over_sampling import SMOTE
-# from hyperopt import STATUS_OK, Trials, fmin, hp, tpe
-from sklearn.model_selection import GridSearchCV
+
 
 import xgboost as xgb
 from xgboost import plot_importance
-from xgboost import plot_tree
 
 
 def read_data(data_path):
@@ -42,9 +42,9 @@ def over_sample(X_train, y_train):
     return X_train, y_train
 
 
-def xgboost_model(X_train, y_train, X_test, y_test):
+def xgboost_model(X_train, y_train):
     # make model
-    xgb_model = xgb.XGBClassifier(use_label_encoder=False, n_jobs=-1)
+    xgb_model = xgb.XGBClassifier(use_label_encoder=False, n_jobs=-1,eval_metric='mlogloss')
     xgb_model.fit(X_train, y_train)
     return xgb_model
 
@@ -120,6 +120,18 @@ def create_new_client():
     return client_data, client_data_df
 
 
+def important_features(X_train, y_train):
+    # https://stackoverflow.com/questions/40664776/how-to-change-size-of-plot-in-xgboost-plot-importance
+    # Train the model
+    xgbmodel = xgboost_model(X_train, y_train)
+
+    # Plot feature importances
+    fig, ax = plt.subplots(figsize=(12, 15))
+    plot_importance(xgbmodel, ax=ax, color='#b7d3b3')
+    plt.title("XGBClassifer Feature Importances");
+    plt.show();
+
+
 def main(data_path):
     data = read_data(data_path)
     print(data)
@@ -129,7 +141,7 @@ def main(data_path):
     print(y_train.shape)
 
     # construct model
-    xgb_model = xgboost_model(X_train, y_train, X_test, y_test)
+    xgb_model = xgboost_model(X_train, y_train)
     # make predictions
     y_pred = model_prediction(xgb_model, X_test)
     # perform evaluation
@@ -140,6 +152,8 @@ def main(data_path):
     # create new client to test the model
     client_data, client_data_df = create_new_client()
     client_pred = model_prediction(xgb_model, client_data.reshape(1, -1))
+
+    important_features(X_train, y_train)
 
     if client_pred[0] == 1:
         print("Client will leave the credit card services.")
