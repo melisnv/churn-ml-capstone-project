@@ -11,7 +11,6 @@ pd.set_option("display.width",500)
 sns.set(rc={"figure.figsize":(6,8)})
 
 from sklearn.metrics import classification_report, confusion_matrix
-from sklearn.metrics import accuracy_score
 from sklearn.model_selection import train_test_split
 from imblearn.over_sampling import SMOTE
 
@@ -125,10 +124,10 @@ def important_features(X_train, y_train):
     # Train the model
     xgbmodel = xgboost_model(X_train, y_train)
 
-    # Plot feature importances
+    # Plot feature importance
     fig, ax = plt.subplots(figsize=(12, 15))
     plot_importance(xgbmodel, ax=ax, color='#b7d3b3')
-    plt.title("XGBClassifer Feature Importances");
+    plt.title("XGBClassifier Feature Importance");
     plt.show();
 
 
