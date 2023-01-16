@@ -26,7 +26,7 @@ share/python-wheels/
 .installed.cfg
 *.egg
 MANIFEST
-/website/python=3.9
+python=3.9
 
 # PyInstaller
 #  Usually these files are written by a python script from a template
@@ -106,7 +106,7 @@ celerybeat.pid
 .env
 .venv
 env/
-churnenv/
+.churnenv
 venv/
 ENV/
 env.bak/
