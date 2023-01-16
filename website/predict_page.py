@@ -162,4 +162,4 @@ def show_predict_page():
             possibility = "will leave"
         if churn[0] == 0:
             possibility = "will not leave"
-        st.subheader(f"The client is {possibility} the credit card service.")
+        st.subheader(f"The client {possibility} the credit card service.")
