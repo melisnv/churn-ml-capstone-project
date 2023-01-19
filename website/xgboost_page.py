@@ -54,9 +54,9 @@ def show_xgboost_page():
         "When looking at the performance evaluations of our model, we checked the attribute importance order in our "
         "data and saw our newly created attribute 'crediworthness', which ranked high.")
 
-    image = Image.open('visuals/feature_importance.png')
+    image = Image.open('website/feature_importance.png')
     st.image(image, caption='Feature Importance')
 
     st.subheader("Model")
-    image = Image.open('visuals/xgboost.png')
+    image = Image.open('website/xgboost.png')
     st.image(image, caption='XGBoost Ensemble Algorithm')
