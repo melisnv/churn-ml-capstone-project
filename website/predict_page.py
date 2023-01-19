@@ -153,9 +153,11 @@ def show_predict_page():
         # reshape the array to 2D
         client_data = client_data.reshape(1, -1)
 
+        st.write("Bakalım hata nerede")
         data = pd.read_csv('data/unscaled_data.csv')
+        st.dataframe(data)
         X_train, X_test, y_train, y_test = split_data(data, "Attrition_Flag")
-
+        st.write(X_train)
         # train model
         xgb_model = xgboost_model(X_train, y_train)
 
