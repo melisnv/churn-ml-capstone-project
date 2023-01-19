@@ -153,7 +153,7 @@ def show_predict_page():
         # reshape the array to 2D
         client_data = client_data.reshape(1, -1)
 
-        data = read_data('./unscaled_data.csv')
+        data = read_data('unscaled_data.csv')
         X_train, X_test, y_train, y_test = split_data(data, "Attrition_Flag")
 
         # train model
