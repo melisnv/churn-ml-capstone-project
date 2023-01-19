@@ -154,7 +154,7 @@ def show_predict_page():
         client_data = client_data.reshape(1, -1)
 
         st.write("Bakalım hata nerede")
-        data = pd.read_csv('data/unscaled_data.csv')
+        data = pd.read_csv('unscaled_data.csv')
         st.dataframe(data)
         X_train, X_test, y_train, y_test = split_data(data, "Attrition_Flag")
         st.write(X_train)
