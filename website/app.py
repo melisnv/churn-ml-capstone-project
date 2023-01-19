@@ -5,6 +5,15 @@ from xgboost_page import show_xgboost_page
 from segmentation_page import  show_segmentation_page
 from cluster_page import show_cluster_page
 
+hide_default_format = """
+       <style>
+       #MainMenu {visibility: hidden; }
+       footer {visibility: hidden;}
+       </style>
+       """
+st.markdown(hide_default_format, unsafe_allow_html=True)
+
+st.set_page_config(page_title="will client leave?")
 
 #side_bar = st.sidebar
 #analyze_page = side_bar.button("Analysis")
