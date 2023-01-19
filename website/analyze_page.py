@@ -18,7 +18,7 @@ def map_categories(data, feature, category_dict):
     return data
 
 
-@st.cache
+@st.cache(allow_output_mutation=True)
 def data_process_feature_engineering(data):
     # attrition flag
     data["Attrition_Flag"] = data["Attrition_Flag"].map({"Existing Customer": 0, "Attrited Customer": 1})
@@ -85,10 +85,15 @@ data = read_data(data_path)
 
 
 processed_data = data_process_feature_engineering(data)
+#processed_data = processed_data.drop("CLIENTNUM",axis=1)
 
 
 def show_analysis():
     st.title("Analyze of the Credit Card Customer Data")
+    st.title("")
+
+    st.subheader("Data")
+    st.dataframe(data.iloc[:, 1:-2].head())
 
     st.subheader("Distribution of Customer\'s Age")
     fig1 = plt.figure(figsize=(10, 4))
@@ -273,7 +278,7 @@ def show_analysis():
 
     st.subheader("Distribution of Customer\'s Card Types and Income Groups")
     fig15 = plt.figure(figsize=(10, 4))
-    sns.histplot(data, x="Card_Category", kde=True, palette=['#B2D3BE', '#5E6073','#C9BBCF','#898AA6','#C9BBCF','#73A9AD'], hue="Income_Category")
+    sns.histplot(data, x="Card_Category", kde=True, hue="Income_Category")
     plt.xlabel("card types")
     st.pyplot(fig15)
 
@@ -361,11 +366,5 @@ def show_analysis():
                 "predict churn.")
 
 
-    processed_data.drop("CLIENTNUM",axis=1,inplace=True)
+    #processed_data.drop("CLIENTNUM",axis=1,inplace=True)
     st.write(processed_data.head())
-
-
-
-
-
-
