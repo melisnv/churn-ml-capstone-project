@@ -47,7 +47,7 @@ def pipeline_process(df, cols):
 
 
 def show_cluster_page():
-    df = read_data("../data/BankChurners.csv")
+    df = read_data("./data/BankChurners.csv")
 
     st.title("Client Clustering with K-Means Algorithm")
     st.title("")

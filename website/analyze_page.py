@@ -80,7 +80,7 @@ def data_process_feature_engineering(data):
     return data
 
 
-data_path = "../data/BankChurners.csv"
+data_path = "./data/BankChurners.csv"
 data = read_data(data_path)
 
 

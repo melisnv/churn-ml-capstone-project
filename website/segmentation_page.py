@@ -61,7 +61,7 @@ def create_afm(dataframe, csv=False):
 
 
 def show_segmentation_page():
-    df = read_data("../data/BankChurners.csv")
+    df = read_data("./data/BankChurners.csv")
 
     st.title("Customer Segmentation with AFM")
     st.title("")
