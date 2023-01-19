@@ -2,7 +2,6 @@ import pandas as pd
 import streamlit as st
 import xgboost as xgb
 import numpy as np
-from pathlib import Path
 from sklearn.model_selection import train_test_split
 
 
@@ -154,10 +153,7 @@ def show_predict_page():
         # reshape the array to 2D
         client_data = client_data.reshape(1, -1)
 
-        #data = pd.read_csv('./data/unscaled_data.csv')
-        unscaled_data_csv = Path(__file__).parents[1] / 'data/unscaled_data.csv'
-        data = read_data(unscaled_data_csv)
-
+        data = pd.read_csv('data/unscaled_data.csv')
         X_train, X_test, y_train, y_test = split_data(data, "Attrition_Flag")
 
         # train model
