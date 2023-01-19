@@ -5,19 +5,18 @@ from xgboost_page import show_xgboost_page
 from segmentation_page import  show_segmentation_page
 from cluster_page import show_cluster_page
 
-
-#side_bar = st.sidebar
-#analyze_page = side_bar.button("Analysis")
-#predict_page = side_bar.button("Prediction")
-
-page = st.sidebar.selectbox("Pages",("Predict","Analysis","XGBoost Model","Segmentation","Cluster"))
-
 st.set_page_config(
     page_title="churn or not",
     page_icon="👋",
     layout="wide",
     initial_sidebar_state="collapsed"
 )
+
+#side_bar = st.sidebar
+#analyze_page = side_bar.button("Analysis")
+#predict_page = side_bar.button("Prediction")
+
+page = st.sidebar.selectbox("Pages",("Predict","Analysis","XGBoost Model","Segmentation","Cluster"))
 
 if page == "Predict":
     show_predict_page()
