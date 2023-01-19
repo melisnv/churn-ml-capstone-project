@@ -106,11 +106,12 @@ celerybeat.pid
 .env
 .venv
 env/
-.churnenv
+churnenv
 venv/
 ENV/
 env.bak/
 venv.bak/
+python=3.9
 
 # Spyder project settings
 .spyderproject
