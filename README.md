@@ -26,7 +26,7 @@ Model Selection and Tuning: There are many different machine learning models to 
 
 Handling Imbalanced Data: The bank customer dataset is imbalanced, with a majority of the data points belonging to one class. This can lead to biased models that perform poorly on the minority class. To overcome this, we used the technique SMOTE to generate synthetic data.
 
-Interpretability: In some cases, it can be challenging to understand and interpret the results of a predictive model, especially when working with complex models like XGBoost. To overcome this, one can use techniques such as feature importance, partial dependence plots, and SHAP values to gain insight into the model's decision making process.
+Interpretability: In some cases, it can be challenging to understand and interpret the results of a predictive model, especially when working with complex models like XGBoost. To overcome this, we used the technique feature importanceto gain insight into the model's decision making process.
 
 
 
