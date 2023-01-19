@@ -104,13 +104,13 @@ def show_segmentation_page():
     st.dataframe(afm[8:10])
 
     st.title("Propotion of Client Levels")
-    img_cust_dist = Image.open('visuals/customer_distribution.png')
+    img_cust_dist = Image.open('./visuals/customer_distribution.png')
     st.image(img_cust_dist, caption='Client Segments')
 
     st.title("Distribution of Client Activity")
-    img_activity = Image.open('visuals/user_activity.png')
+    img_activity = Image.open('./visuals/user_activity.png')
     st.image(img_activity, caption='Client Activity')
 
     st.title("Distribution of Client Transaction")
-    img_transac = Image.open('visuals/customer_transaction.png')
+    img_transac = Image.open('./visuals/customer_transaction.png')
     st.image(img_transac, caption='Client Transaction')
