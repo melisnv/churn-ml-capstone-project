@@ -12,6 +12,12 @@ from cluster_page import show_cluster_page
 
 page = st.sidebar.selectbox("Pages",("Predict","Analysis","XGBoost Model","Segmentation","Cluster"))
 
+st.set_page_config(
+    page_title="churn or not",
+    page_icon="👋",
+    layout="wide",
+    initial_sidebar_state="collapsed"
+)
 
 if page == "Predict":
     show_predict_page()
