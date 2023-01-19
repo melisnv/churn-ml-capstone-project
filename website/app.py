@@ -15,5 +15,5 @@ elif page == "Segmentation":
     show_segmentation_page()
 elif page == "Cluster":
     show_cluster_page()
-else:
+elif page == "Analysis":
     show_analysis()

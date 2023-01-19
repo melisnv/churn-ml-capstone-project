@@ -18,7 +18,7 @@ def map_categories(data, feature, category_dict):
     return data
 
 
-@st.cache(allow_output_mutation=True)
+#@st.cache(allow_output_mutation=True)
 def data_process_feature_engineering(data):
     # attrition flag
     data["Attrition_Flag"] = data["Attrition_Flag"].map({"Existing Customer": 0, "Attrited Customer": 1})
@@ -80,17 +80,18 @@ def data_process_feature_engineering(data):
     return data
 
 
-data_path = "./data/BankChurners.csv"
-data = read_data(data_path)
 
-
-processed_data = data_process_feature_engineering(data)
+#processed_data = data_process_feature_engineering(data)
 #processed_data = processed_data.drop("CLIENTNUM",axis=1)
 
 
 def show_analysis():
     st.title("Analyze of the Credit Card Customer Data")
     st.title("")
+
+    data_path = "./data/BankChurners.csv"
+    data = read_data(data_path)
+    #data = data.iloc[:, 1:-2]
 
     st.subheader("Data")
     st.dataframe(data.iloc[:, 1:-2].head())
@@ -176,10 +177,10 @@ def show_analysis():
 
     st.title("")
 
-    st.subheader("Distribution of Customer Credit Limit")
+    st.subheader("Distribution of Customer Total Revolving Balance")
     fig7 = plt.figure(figsize=(10, 4))
     sns.histplot(data, x='Total_Revolving_Bal', kde=True, color="#7F7C82")
-    plt.xlabel("limits in total")
+    plt.xlabel("revolving balance in total")
     st.pyplot(fig7)
     st.markdown("This feature represents the total revolving balance on the credit card of the customer, it could be "
                 "a useful feature in the analysis as it provides insight into the customer's credit utilization and "
@@ -305,6 +306,8 @@ def show_analysis():
     code_crediworthness = '''approx_income = {1: 20000, 2: 50000, 4: 100000, 3:70000, 5: 130000}
     data['Approx_Income'] = data['Income_Category'].apply(lambda x: approx_income[x])'''
     st.code(code_crediworthness, language="python")
+
+    processed_data = data_process_feature_engineering(data)
 
     st.markdown("For example, for the group '40K', we can assign the value 40,000. For the group '60K-80K', "
                 "we can assign the value 70,000 (midpoint of the range). And for the group '80K-120K' we can assign "
