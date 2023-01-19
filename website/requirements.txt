@@ -1,0 +1,5 @@
+pandas
+numpy
+seaborn
+matplotlib.plt
+xgboost==1.0.2
