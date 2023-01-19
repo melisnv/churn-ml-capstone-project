@@ -153,13 +153,7 @@ def show_predict_page():
         # reshape the array to 2D
         client_data = client_data.reshape(1, -1)
 
-        #data = read_data('./data/unscaled_data.csv')
-        uploaded_file = st.file_uploader("Choose your database", accept_multiple_files=False)
-
-        if uploaded_file is not None:
-            data = read_data(uploaded_file)
-        else:
-            data = read_data("unscaled_data.csv")
+        data = pd.read_csv('./data/unscaled_data.csv')
 
         X_train, X_test, y_train, y_test = split_data(data, "Attrition_Flag")
 
